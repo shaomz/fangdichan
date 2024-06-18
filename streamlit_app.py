@@ -6,12 +6,7 @@ import cv2
 
 hide_streamlit_style = """
 
-<style>
-MainMenu {visibility: hidden;}
-footer {visibility: hidden;}
-header {visibility: hidden;}
-.viewerBadge_link__qRIco {display: none;}
-</style>
+
 <script>
 document.querySelector('.viewerBadge_link__qRIco').style.display = 'none';
 </script>
