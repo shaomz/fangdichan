@@ -8,6 +8,7 @@ hide_streamlit_style = """
 MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
+viewerBadge_link__qRIco {visibility: hidden;}
 </style>
 """
 # Page title
