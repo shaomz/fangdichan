@@ -12,9 +12,10 @@ header {visibility: hidden;}
 .viewerBadge_link__qRIco {display: none;}
 </style>
 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 # Page title
-st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
+# st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title('📊 Interactive Data Explorer')
 
 with st.expander('About this app'):
