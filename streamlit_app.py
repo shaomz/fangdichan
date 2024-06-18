@@ -13,7 +13,7 @@ header {visibility: hidden;}
 .viewerBadge_link__qRIco {display: none;}
 </style>
 <script>
-document.querySelector('.hide-me').style.display = 'none';
+document.querySelector('.viewerBadge_link__qRIco').style.display = 'none';
 </script>
 """
 
