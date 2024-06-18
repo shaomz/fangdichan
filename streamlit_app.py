@@ -2,7 +2,14 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import altair as alt
-
+hide_streamlit_style = """
+<style>
+MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 # Page title
 st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
 st.title('📊 Interactive Data Explorer')
