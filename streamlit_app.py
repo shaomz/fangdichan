@@ -5,7 +5,7 @@ import altair as alt
 import cv2
 hide_streamlit_style = """
 <style>
-#MainMenu {visibility: hidden;}
+MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
 </style>
