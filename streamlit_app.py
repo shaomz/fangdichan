@@ -13,11 +13,7 @@ header {visibility: hidden;}
 .viewerBadge_link__qRIco {display: none;}
 </style>
 <script>
-// 获取所有class为"a"的元素并隐藏它们
-var elements = document.getElementsByClassName("viewerBadge_link__qRIco");
-for (var i = 0; i < elements.length; i++) {
-    elements[i].style.display = 'none';
-}
+document.querySelector('.hide-me').style.display = 'none';
 </script>
 """
 
