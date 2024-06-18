@@ -5,19 +5,20 @@ import altair as alt
 import cv2
 
 hide_streamlit_style = """
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
+
 <style>
 MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
 .viewerBadge_link__qRIco {display: none;}
 </style>
-</body>
-</html>
+<script>
+// 获取所有class为"a"的元素并隐藏它们
+var elements = document.getElementsByClassName("viewerBadge_link__qRIco");
+for (var i = 0; i < elements.length; i++) {
+    elements[i].style.display = 'none';
+}
+</script>
 """
 
 # Page title
