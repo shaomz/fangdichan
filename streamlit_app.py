@@ -5,12 +5,19 @@ import altair as alt
 import cv2
 
 hide_streamlit_style = """
+<!DOCTYPE html>
+<html>
+<head>
 <style>
 MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
 .viewerBadge_link__qRIco {display: none;}
 </style>
+</head>
+<body>
+</body>
+</html>
 """
 
 # Page title
