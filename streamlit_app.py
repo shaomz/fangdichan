@@ -1,8 +1,7 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
 import altair as alt
-import cv2
+import pandas as pd
+from vega_datasets import data
 
 hide_streamlit_style = """
 <style>
@@ -12,15 +11,66 @@ header {visibility: hidden;}
 </style>
 """
 
-# Page title
-st.set_page_config(page_title='TEST', page_icon='📊')
-st.html(hide_streamlit_style)
-st.title('TEST')
+@st.cache_data
+def get_data():
+    source = data.stocks()
+    source = source[source.date.gt("2004-01-01")]
+    return source
 
-with st.expander('About this app'):
-  st.markdown('**What can this app do?**')
-  st.info('This app shows the use of Pandas for data wrangling, Altair for chart creation and editable dataframe for data interaction.')
-  st.markdown('**How to use the app?**')
-  st.warning('To engage with the app, 1. Select genres of your interest in the drop-down selection box and then 2. Select the year duration from the slider widget. As a result, this should generate an updated editable DataFrame and line plot.')
-  
-st.subheader('HOW ARE YOU')
+stock_data = get_data()
+st.dataframe(stock_data)
+hover = alt.selection_single(
+    fields=["date"],
+    nearest=True,
+    on="mouseover",
+    empty="none",
+)
+
+lines = (
+    alt.Chart(stock_data, title="Evolution of stock prices")
+    .mark_line()
+    .encode(
+        x="date",
+        y="price",
+        color="symbol",
+    )
+)
+
+points = lines.transform_filter(hover).mark_circle(size=65)
+
+tooltips = (
+    alt.Chart(stock_data)
+    .mark_rule()
+    .encode(
+        x="yearmonthdate(date)",
+        y="price",
+        opacity=alt.condition(hover, alt.value(0.3), alt.value(0)),
+        tooltip=[
+            alt.Tooltip("date", title="Date"),
+            alt.Tooltip("price", title="Price (USD)"),
+        ],
+    )
+    .add_selection(hover)
+)
+
+data_layer = lines + points + tooltips
+
+ANNOTATIONS = [
+    ("Sep 01, 2007", 450, "🙂", "Something's going well for GOOG & AAPL."),
+    ("Nov 01, 2008", 220, "🙂", "The market is recovering."),
+    ("Dec 01, 2007", 750, "😱", "Something's going wrong for GOOG & AAPL."),
+    ("Dec 01, 2009", 680, "😱", "A hiccup for GOOG."),
+]
+annotations_df = pd.DataFrame(
+    ANNOTATIONS, columns=["date", "price", "marker", "description"]
+)
+annotations_df.date = pd.to_datetime(annotations_df.date)
+
+annotation_layer = (
+    alt.Chart(annotations_df)
+    .mark_text(size=20, dx=-10, dy=0, align="left")
+    .encode(x="date:T", y=alt.Y("price:Q"), text="marker", tooltip="description")
+)
+
+combined_chart = data_layer + annotation_layer
+st.altair_chart(combined_chart, use_container_width=True)
