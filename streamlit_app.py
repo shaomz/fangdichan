@@ -72,4 +72,4 @@ data_layer = lines + points + tooltips
 
 combined_chart = data_layer 
 # + annotation_layer
-st.altair_chart(combined_chart, use_container_width=True)
+st.altair_chart(combined_chart,theme='streamlit',use_container_width=True)
