@@ -1,4 +1,4 @@
 build-essential
 pkg-config
 default-libmysqlclient-dev
-mysql-server -y && mysqladmin -u root password "1234"
+# mysql-server -y && mysqladmin -u root password "1234"
