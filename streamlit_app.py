@@ -26,7 +26,7 @@ hover = alt.selection_single(
 )
 
 lines = (
-    alt.Chart(stock_data, title="一手房存量")
+    alt.Chart(stock_data, theme='streamlit',title="一手房存量")
     .mark_line()
     .encode(
         x="date",
