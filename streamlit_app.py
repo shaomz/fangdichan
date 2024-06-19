@@ -13,7 +13,7 @@ header {visibility: hidden;}
 """
 
 # Page title
-# st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
+st.set_page_config(page_title='Interactive Data Explorer', page_icon='📊')
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title('📊 Interactive Data Explorer')
 
