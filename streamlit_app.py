@@ -9,7 +9,6 @@ hide_streamlit_style = """
 MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
-.viewerBadge_link__qRIco {display: none;}
 </style>
 """
 
